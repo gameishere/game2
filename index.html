@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('sky.jpeg'); /* Adjust the path to your image file */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Countdown Styles */
+        #countdown {
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+            color: #fff;
+        }
+
+        /* Password Box Styles */
+        #password-box {
+            margin-top: 20px;
+        }
+
+        #password-input {
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        #enter-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Website Header</h1>
+        <p>Tagline or description goes here</p>
+        <div id="countdown"></div>
+    </header>
+
+    <section>
+        <h2>Welcome to Your Website!</h2>
+        <p>This is a simple static website hosted on GitHub Pages.</p>
+        <p>You can customize this section with your own content.</p>
+
+        <!-- Password Box -->
+        <div id="password-box">
+            <input type="password" id="password-input" placeholder="Enter Password">
+            <button id="enter-button" onclick="checkPassword()">Enter</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Your Website | Designed by You</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        const targetDate = new Date(new Date().getFullYear(), 11, 14).getTime(); // December 14th of the current year
+
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML =
+                days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = 'EXPIRED';
+            }
+        }, 1000);
+
+        // Check Password Function
+        function checkPassword() {
+            const enteredPassword = document.getElementById('password-input').value;
+            const correctPassword = 'NUTCRACKER';
+
+            if (enteredPassword === correctPassword) {
+                // Redirect to the /nutcracker page
+                window.location.href = 'gameishere.github.io/nutcracker';
+            } else {
+                alert('Incorrect password. Try again.');
+            }
+        }
+    </script>
+</body>
+</html>
